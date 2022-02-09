@@ -1,55 +1,69 @@
 import {
   AutoIncrement,
   Column,
+  DataType,
   Model,
   Table,
   Unique,
 } from 'sequelize-typescript';
-import {
-  IsInt,
-  IsNumber,
-  Max,
-  MaxLength,
-  Min,
-  MinLength,
-} from 'class-validator';
 
 @Table
 export class Medicos extends Model<Medicos> {
-  @Column
-  @AutoIncrement
-  @Unique
-  //@IsNumber()
+  @Column({
+    type: DataType.INTEGER(),
+    allowNull: false,
+  })
   id: number;
 
-  @Column
-  //@MaxLength(120)
+  @Column({
+    type: DataType.STRING(),
+    allowNull: false,
+    validate: {
+      len: [1, 120],
+    },
+  })
   nome: string;
 
-  @Column
-  @Unique
-  //@Min(1)
-  //@Max(9999999)
+  @Column({
+    type: DataType.INTEGER(),
+    allowNull: false,
+    validate: {
+      len: [0, 7],
+    },
+  })
   CRM: number;
 
-  @Column
-  //@IsInt()
+  @Column({
+    type: DataType.INTEGER(),
+    allowNull: false,
+    validate: {
+      isNumeric: true,
+    },
+  })
   telefone_fixo: number;
 
-  @Column
-  //@IsInt()
+  @Column({
+    type: DataType.INTEGER(),
+    allowNull: false,
+    validate: {
+      isNumeric: true,
+    },
+  })
   telefone_celular: number;
 
-  @Column
-  //@IsInt()
+  @Column({
+    type: DataType.INTEGER(),
+    allowNull: false,
+    validate: {
+      isNumeric: true,
+    },
+  })
   cep: number;
 
   //@Column
   //@MinLength(2)
   //nome_especialidades: string[];
 }
-
-
 
 /*import { Table, Model, Column, DataType } from "sequelize-typescript";
 

@@ -7,7 +7,7 @@ import {
   Min,
   MinLength,
 } from 'class-validator';
-import { especialidades } from '..
+import { Especialidades } from '../model/especialidades.model';
 
 export class Medico {
 
