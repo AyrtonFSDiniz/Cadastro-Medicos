@@ -11,9 +11,13 @@ export class MedicosService {
     private medicosModel: typeof Medicos,
   ) {}
 
-  async create(createMedicoDto: CreateMedicoDto): Promise<Medicos> {
+  /*async create(createMedicoDto: CreateMedicoDto): Promise<Medicos> {
     return await this.medicosModel.create(createMedicoDto);
-  }
+  }*/
+
+  async create(salvarMedico: Medicos): Promise<Medicos> {
+    return await this.medicosModel.create(salvarMedico);
+}
 
   async findAll(): Promise<Medicos[]> {
     return await this.medicosModel.findAll();
@@ -25,10 +29,10 @@ export class MedicosService {
     });
   }
 
-  async update(id: number, alterarMedico: Medicos): Promise<Medicos> {
+  async update(alterarMedico: Medicos): Promise<[number, Medicos[]]> {
     return await this.medicosModel.update(alterarMedico, {
       where: {
-        id,
+        id: alterarMedico.id,
       },
     });
   }

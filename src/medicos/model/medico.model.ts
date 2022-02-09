@@ -15,7 +15,7 @@ import {
 } from 'class-validator';
 
 @Table
-export class Medicos extends Model {
+export class Medicos extends Model<Medicos> {
   @Column
   @AutoIncrement
   @Unique
@@ -48,3 +48,28 @@ export class Medicos extends Model {
   //@MinLength(2)
   //nome_especialidades: string[];
 }
+
+
+
+/*import { Table, Model, Column, DataType } from "sequelize-typescript";
+
+@Table
+export class Book extends Model<Book>{
+
+    @Column({
+        type: DataType.STRING(60),
+        allowNull: false,
+    })
+    code: string;
+
+    @Column({
+        type: DataType.STRING,
+        allowNull: false,
+    })
+    name: string;
+
+    @Column({
+        type: DataType.DECIMAL(10, 2),
+        allowNull: false,
+    })
+    price: number;*/

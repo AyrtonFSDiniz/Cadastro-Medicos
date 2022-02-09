@@ -17,9 +17,14 @@ export class MedicosController {
   constructor(private readonly medicosService: MedicosService) {}
 
   @Post()
-  create(@Body() createMedicoDto: CreateMedicoDto): Promise<Medicos> {
-    return this.medicosService.create(createMedicoDto);
+ async create(@Body() criarMedico: Medicos): Promise<Medicos> {
+    return await this.medicosService.create(criarMedico);
   }
+
+  /*@Post()
+    async criar(@Body() livro: Livro) {
+        this.livrosService.criar(livro)
+    }*/
 
   @Get()
   findAll(): Promise<Medicos[]> {
@@ -34,10 +39,15 @@ export class MedicosController {
   @Patch(':id')
   update(
     @Param('id') id: number,
-    @Body() updateMedicoDto: UpdateMedicoDto,
-  ): Promise<Medicos> {
-    return this.medicosService.update(+id, updateMedicoDto);
+    @Body() atualizarMedico: Medicos,
+  ): Promise<[number, Medicos[]]> {
+    return this.medicosService.update(atualizarMedico);
   }
+
+  /*@Put()
+    async alterar(@Body() livro: Livro): Promise<[number, Livro[]]> {
+        return this.livrosService.alterar(livro)
+    }*/
 
   @Delete(':id')
   remove(@Param('id') id: number): Promise<void> {
