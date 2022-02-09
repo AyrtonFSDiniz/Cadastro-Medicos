@@ -27,20 +27,20 @@ export class MedicosController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<Medicos> {
+  findOne(@Param('id') id: number): Promise<Medicos> {
     return this.medicosService.findOne(+id);
   }
 
   @Patch(':id')
   update(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() updateMedicoDto: UpdateMedicoDto,
   ): Promise<Medicos> {
     return this.medicosService.update(+id, updateMedicoDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string): Promise<void> {
+  remove(@Param('id') id: number): Promise<void> {
     return this.medicosService.remove(+id);
   }
 }

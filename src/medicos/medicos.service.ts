@@ -25,14 +25,12 @@ export class MedicosService {
     });
   }
 
-  async update(id: number, updateMedicoDto: UpdateMedicoDto): Promise<Medicos> {
-    const med = {
-      nome: updateMedicoDto.nome,
-      crm: updateMedicoDto.CRM,
-      telefone_fixo: updateMedicoDto.telefone_fixo,
-      telefone_celular: updateMedicoDto.telefone_celular,
-    };
-    return await this.medicosModel.update(+id, updateMedicoDto);
+  async update(id: number, alterarMedico: Medicos): Promise<Medicos> {
+    return await this.medicosModel.update(alterarMedico, {
+      where: {
+        id,
+      },
+    });
   }
 
   async remove(id: number): Promise<void> {

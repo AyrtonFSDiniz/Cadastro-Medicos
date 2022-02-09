@@ -20,5 +20,6 @@ import { Medicos } from '../src/medicos/model/medico.model';
   ],
   controllers: [AppController],
   providers: [AppService],
+  exports: [SequelizeModule],
 })
 export class AppModule {}

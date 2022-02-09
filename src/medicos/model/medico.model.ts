@@ -13,37 +13,38 @@ import {
   Min,
   MinLength,
 } from 'class-validator';
+
 @Table
 export class Medicos extends Model {
   @Column
   @AutoIncrement
   @Unique
-  @IsNumber()
+  //@IsNumber()
   id: number;
 
   @Column
-  @MaxLength(120)
+  //@MaxLength(120)
   nome: string;
 
   @Column
   @Unique
-  @Min(1)
-  @Max(9999999)
+  //@Min(1)
+  //@Max(9999999)
   CRM: number;
 
   @Column
-  @IsInt()
+  //@IsInt()
   telefone_fixo: number;
 
   @Column
-  @IsInt()
+  //@IsInt()
   telefone_celular: number;
 
   @Column
-  @IsInt()
+  //@IsInt()
   cep: number;
 
-  @Column
-  @MinLength(2)
-  nome_especialidades: string[];
+  //@Column
+  //@MinLength(2)
+  //nome_especialidades: string[];
 }
