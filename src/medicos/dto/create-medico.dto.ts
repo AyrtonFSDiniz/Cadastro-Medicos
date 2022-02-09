@@ -1,20 +1,15 @@
 export class CreateMedicoDto {
+  id: number;
 
+  nome: string;
 
-nome: string;
+  CRM: number;
 
+  telefone_fixo: number;
 
-CRM: number;
+  telefone_celular: number;
 
+  cep: number;
 
-telefone_fixo: number;
-
-
-telefone_celular: number;
-
-
-cep: number;
-
-
-especialidade: string;
+  nome_especialidades: string[];
 }

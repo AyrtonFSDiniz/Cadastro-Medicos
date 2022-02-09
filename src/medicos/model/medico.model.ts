@@ -1,20 +1,49 @@
-import { Column, Model, Table } from 'sequelize-typescript';
-
+import {
+  AutoIncrement,
+  Column,
+  Model,
+  Table,
+  Unique,
+} from 'sequelize-typescript';
+import {
+  IsInt,
+  IsNumber,
+  Max,
+  MaxLength,
+  Min,
+  MinLength,
+} from 'class-validator';
 @Table
 export class Medicos extends Model {
-    
-@Column
-nome: string;
+  @Column
+  @AutoIncrement
+  @Unique
+  @IsNumber()
+  id: number;
 
-@Column
-crm: number;
+  @Column
+  @MaxLength(120)
+  nome: string;
 
-@Column
-telefone_fixo: number;
+  @Column
+  @Unique
+  @Min(1)
+  @Max(9999999)
+  CRM: number;
 
-@Column
-telefone_celular: number;
+  @Column
+  @IsInt()
+  telefone_fixo: number;
 
-@Column
-cep: number;
+  @Column
+  @IsInt()
+  telefone_celular: number;
+
+  @Column
+  @IsInt()
+  cep: number;
+
+  @Column
+  @MinLength(2)
+  nome_especialidades: string[];
 }

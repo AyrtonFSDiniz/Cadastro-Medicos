@@ -8,26 +8,35 @@ import { Medicos } from './model/medico.model';
 export class MedicosService {
   constructor(
     @InjectModel(Medicos)
-    private medicosModel: typeof Medicos
-    ) {}
+    private medicosModel: typeof Medicos,
+  ) {}
 
-  create(createMedicoDto: CreateMedicoDto) {
-    return 'This action adds a new medico';
+  async create(createMedicoDto: CreateMedicoDto): Promise<Medicos> {
+    return await this.medicosModel.create(createMedicoDto);
   }
 
-  findAll() {
-    return `This action returns all medicos`;
+  async findAll(): Promise<Medicos[]> {
+    return await this.medicosModel.findAll();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} medico`;
+  async findOne(id: number): Promise<Medicos> {
+    return await this.medicosModel.findOne({
+      where: { id },
+    });
   }
 
-  update(id: number, updateMedicoDto: UpdateMedicoDto) {
-    return `This action updates a #${id} medico`;
+  async update(id: number, updateMedicoDto: UpdateMedicoDto): Promise<Medicos> {
+    const med = {
+      nome: updateMedicoDto.nome,
+      crm: updateMedicoDto.CRM,
+      telefone_fixo: updateMedicoDto.telefone_fixo,
+      telefone_celular: updateMedicoDto.telefone_celular,
+    };
+    return await this.medicosModel.update(+id, updateMedicoDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} medico`;
+  async remove(id: number): Promise<void> {
+    const user = await this.findOne(id);
+    await user.destroy();
   }
 }
