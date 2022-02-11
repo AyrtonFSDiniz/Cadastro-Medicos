@@ -1,7 +1,7 @@
+import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { CreateMedicoDto } from './dto/create-medico.dto';
-import { UpdateMedicoDto } from './dto/update-medico.dto';
+import { Observable } from 'rxjs';
 import { Medicos } from '../model/medico.model';
 
 @Injectable()
@@ -9,13 +9,24 @@ export class MedicosService {
   constructor(
     @InjectModel(Medicos)
     private medicosModel: typeof Medicos,
+    private httpService: HttpService,
   ) {}
 
-  /*async create(createMedicoDto: CreateMedicoDto): Promise<Medicos> {
-    return await this.medicosModel.create(createMedicoDto);
+  async create(salvarMedico: Medicos): Promise<Medicos> {
+     
+    /*findAll(): Observable<AxiosResponse<Medicos[]>> {
+      return this.httpService.get(`https://viacep.com.br/ws/${{medicosModel.cep}}/json`)
   }*/
 
-  async create(salvarMedico: Medicos): Promise<Medicos> {
+    /*const axios = require('axios');
+  const medicosModel = require('../model/medico.model')
+axios
+.get(`https://viacep.com.br/ws/${{medicosModel.cep}}/json`)
+  .then(function (response) {
+    console.log(response);
+  })*/
+    
+
     return await this.medicosModel.create(salvarMedico);
 }
 
