@@ -27,6 +27,25 @@ axios
   })*/
     
 
+  /* getUsers(): Observable<AxiosResponse<User[]>> {
+    console.log('getUsers');
+    return this.httpService.get('http://localhost:3000/usersstatic').pipe(
+      map((response) => {
+        console.log(response.data);
+        return response.data;
+      }),
+    );
+  }
+
+  async getUsersPromise(): Promise<any> {
+    console.log('getUsersPromise');
+    const response = await this.httpService
+      .get('http://localhost:3000/usersstatic')
+      .toPromise();
+    return response.data;
+  }
+} */
+
     return await this.medicosModel.create(salvarMedico);
 }
 
