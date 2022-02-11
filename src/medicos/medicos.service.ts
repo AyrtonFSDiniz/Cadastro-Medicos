@@ -1,7 +1,7 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Medicos } from '../model/medico.model';
 
 @Injectable()
@@ -14,9 +14,9 @@ export class MedicosService {
 
   async create(salvarMedico: Medicos): Promise<Medicos> {
      
-    /*findAll(): Observable<AxiosResponse<Medicos[]>> {
-      return this.httpService.get(`https://viacep.com.br/ws/${{medicosModel.cep}}/json`)
-  }*/
+    findAll(): Observable<AxiosResponse<Medicos[]>> {
+      return this.httpService.get(`https://viacep.com.br/ws/${{salvarMedico.cep}}/json`)
+  }
 
     /*const axios = require('axios');
   const medicosModel = require('../model/medico.model')
@@ -140,6 +140,28 @@ class CreateUserService {
 }
 
 export default CreateUserService */
+
+/*import axios from 'axios';
+
+class Api {
+
+    static async  getAddress (cep){
+        const response = new Address((await axios.get(`https://viacep.com.br/ws/${cep}/json/`)).data);
+        return response;
+    }
+}
+
+class Address{
+    constructor({logradouro, bairro, localidade}){
+        //Para ver todos os campos possíveis, consultar https://viacep.com.br/ws/XXXXXXX/json/
+        this.logradouro = logradouro,
+        this.bairro = bairro,
+        this.localidade = localidade
+    }
+}
+
+//Digite o cep no campo numérico
+Api.getAddress('96030080').then(v => {console.log(v)});*/
     return await this.medicosModel.create(salvarMedico);
 }
 
