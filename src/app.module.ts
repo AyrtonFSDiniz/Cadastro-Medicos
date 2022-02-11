@@ -3,12 +3,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MedicosModule } from './medicos/medicos.module';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { Medicos } from '../src/medicos/model/medico.model';
+import { Medicos } from './model/medico.model';
 
 @Module({
   imports: [
     MedicosModule,
     SequelizeModule.forRoot({
+      // eslint-disable-next-line prettier/prettier
       dialect: 'mysql',
       host: 'localhost',
       port: 3306,

@@ -2,10 +2,11 @@ import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
 import { Medicos } from './medico.model';
 
 @Table
-class Especialidades extends Model {
+export class Especialidades extends Model {
   @Column({
     type: DataType.INTEGER(),
     allowNull: false,
+    primaryKey: true,
     validate: {
       isNumeric: true,
     },

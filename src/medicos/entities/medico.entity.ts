@@ -1,25 +1,14 @@
 import { Column, HasMany, Model, Table } from 'sequelize-typescript';
-import {
-  IsInt,
-  IsNumber,
-  Max,
-  MaxLength,
-  Min,
-  MinLength,
-} from 'class-validator';
-import { Especialidades } from '../model/especialidades.model';
-
-export class Medico {
+import { Especialidades } from '../../model/especialidades.model';
+import { Medicos } from '../../model/medico.model';
 
 @Table
-class Especialidades extends Model {
+export class especialidadesMedicas extends Model<Especialidades> {
   @Column
-  @IsNumber()
   id: number;
 
   @Column
   nome_especialidade: string;
 
-  @HasMany(() => Medicos) medico: Medico[];
-}
+  @HasMany(() => Medicos) medico: Medicos[];
 }

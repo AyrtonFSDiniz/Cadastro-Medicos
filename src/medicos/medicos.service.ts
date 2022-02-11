@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateMedicoDto } from './dto/create-medico.dto';
 import { UpdateMedicoDto } from './dto/update-medico.dto';
-import { Medicos } from './model/medico.model';
+import { Medicos } from '../model/medico.model';
 
 @Injectable()
 export class MedicosService {

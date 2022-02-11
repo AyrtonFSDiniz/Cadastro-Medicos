@@ -10,7 +10,7 @@ import {
 import { MedicosService } from './medicos.service';
 import { CreateMedicoDto } from './dto/create-medico.dto';
 import { UpdateMedicoDto } from './dto/update-medico.dto';
-import { Medicos } from './model/medico.model';
+import { Medicos } from '../model/medico.model';
 
 @Controller('cadastro')
 export class MedicosController {
