@@ -9,23 +9,23 @@ export class MedicosService {
   constructor(
     @InjectModel(Medicos)
     private medicosModel: typeof Medicos,
-    private httpService: HttpService,
+    private readonly httpService: HttpService,
   ) {}
 
   async create(salvarMedico: Medicos): Promise<Medicos> {
-     
-    findAll(): Observable<AxiosResponse<Medicos[]>> {
-      return this.httpService.get(`https://viacep.com.br/ws/${{salvarMedico.cep}}/json`)
+
+    const cep = salvarMedico.cep;
+
+    const dado = this.httpService
+    .get(`https://viacep.com.br/ws/${{cep}}/json`)
+    .toPromise();
+
+    const dados = dado && cep;
+
+    return await this.medicosModel.create(dados);
   }
 
-    /*const axios = require('axios');
-  const medicosModel = require('../model/medico.model')
-axios
-.get(`https://viacep.com.br/ws/${{medicosModel.cep}}/json`)
-  .then(function (response) {
-    console.log(response);
-  })*/
-    
+
 
   /* getUsers(): Observable<AxiosResponse<User[]>> {
     console.log('getUsers');
@@ -162,8 +162,7 @@ class Address{
 
 //Digite o cep no campo numérico
 Api.getAddress('96030080').then(v => {console.log(v)});*/
-    return await this.medicosModel.create(salvarMedico);
-}
+    
 
   async findAll(): Promise<Medicos[]> {
     return await this.medicosModel.findAll();
