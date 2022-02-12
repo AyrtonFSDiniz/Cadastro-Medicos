@@ -9,14 +9,15 @@ import { Medicos } from './model/medico.model';
   imports: [
     MedicosModule,
     SequelizeModule.forRoot({
-      // eslint-disable-next-line prettier/prettier
       dialect: 'mysql',
       host: 'localhost',
       port: 3306,
       username: 'root',
       password: 'root',
-      database: 'test',
+      database: 'database_development',
       models: [Medicos],
+      autoLoadModels: true,
+      synchronize: true,
     }),
   ],
   controllers: [AppController],
