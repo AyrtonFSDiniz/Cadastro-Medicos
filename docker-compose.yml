@@ -1,6 +1,13 @@
 version: '3.1'
 
 services:
+  app:
+    build: .
+    command: npm run start
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/src/main
 
   db:
     image: mysql
@@ -8,3 +15,5 @@ services:
     restart: always
     environment:
       MYSQL_NATIVE_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+      DB_HOSTNAME: mysql
