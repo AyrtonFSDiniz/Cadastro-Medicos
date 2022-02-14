@@ -1,7 +1,8 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { lastValueFrom, map, Observable } from 'rxjs';
+import { response } from 'express';
+import { lastValueFrom, map } from 'rxjs';
 import { Medicos } from '../model/medico.model';
 
 @Injectable()
@@ -15,15 +16,17 @@ export class MedicosService {
   async create(salvarMedico: Medicos): Promise<Medicos> {
     const cep = salvarMedico.cep;
     const dado = await lastValueFrom(
-      this.httpService
-        .post(`https://viacep.com.br/ws/${{ cep }}/json`)
-        .pipe(map((resp) => resp.data)),
+      this.httpService.get(`https://viacep.com.br/ws/${ cep }/json`)
+        .pipe(map((response) => {
+          return response.data;
+        }),
+      ),
     );
     const list = [];
-    const dados = list.push(dado, cep);
-    console.log(dados);
-    return await this.medicosModel.create(dados);
-  }
+    const dados = list.push(dado, salvarMedico);
+    console.log([dados]);
+    return await this.medicosModel.create(salvarMedico);
+};
 
   async findAll(): Promise<Medicos[]> {
     return await this.medicosModel.findAll();

@@ -3,8 +3,9 @@ import { Column, DataType, Model, Table } from 'sequelize-typescript';
 @Table
 export class Medicos extends Model<Medicos> {
   @Column({
-    type: DataType.INTEGER(),
+    type: DataType.INTEGER.UNSIGNED,
     allowNull: false,
+    autoIncrement: true,
     primaryKey: true,
   })
   id: number;
@@ -28,7 +29,7 @@ export class Medicos extends Model<Medicos> {
   CRM: number;
 
   @Column({
-    type: DataType.INTEGER(),
+    type: DataType.BIGINT(),
     allowNull: false,
     validate: {
       isNumeric: true,
@@ -37,7 +38,7 @@ export class Medicos extends Model<Medicos> {
   telefone_fixo: number;
 
   @Column({
-    type: DataType.INTEGER(),
+    type: DataType.BIGINT(),
     allowNull: false,
     validate: {
       isNumeric: true,
