@@ -10,8 +10,8 @@ import { Medicos } from './model/medico.model';
     MedicosModule,
     SequelizeModule.forRoot({
       dialect: 'mysql',
-      host: 'mysql',
-      port: 3307,
+      host: 'localhost',
+      port: 3306,
       username: 'root',
       password: 'root',
       database: 'database_development',

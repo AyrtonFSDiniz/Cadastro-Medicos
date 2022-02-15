@@ -17,3 +17,5 @@ services:
       MYSQL_NATIVE_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
       DB_HOSTNAME: mysql
+    ports:
+      - 3306:3307
