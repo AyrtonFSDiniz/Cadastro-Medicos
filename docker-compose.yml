@@ -1,21 +1,16 @@
 version: '3.1'
 
 services:
-  app:
-    build: .
-    command: npm run start
-    ports:
-      - '3000:3000'
-    volumes:
-      - .:/src/main
-
   db:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
+      MYSQL_DATABASE: database_development
+      MYSQL_PASSWORD: root
       MYSQL_NATIVE_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
       DB_HOSTNAME: mysql
+      MYSQL_TCP_PORT: 3306
     ports:
-      - 3306:3307
+      - 3306:3306
