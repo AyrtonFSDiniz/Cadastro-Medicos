@@ -47,11 +47,11 @@ export class Medicos extends Model<Medicos> {
   telefone_celular: number;
 
   @Column({
-    type: DataType.INTEGER(),
+    type: DataType.BIGINT(),
     allowNull: false,
     validate: {
       isNumeric: true,
     },
   })
-  cep: number;
+  cep: number[];
 }

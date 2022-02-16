@@ -15,7 +15,7 @@ export class MedicosController {
   constructor(private readonly medicosService: MedicosService) {}
 
   @Post()
-  async create(@Body() criarMedico: Medicos): Promise<Medicos> {
+  async create(@Body() criarMedico: Medicos): Promise<Medicos[]> {
     return await this.medicosService.create(criarMedico);
   }
 

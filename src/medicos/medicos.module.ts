@@ -17,6 +17,6 @@ import { HttpModule } from '@nestjs/axios';
   ],
   controllers: [MedicosController],
   providers: [MedicosService],
-  exports: [SequelizeModule.forFeature([Medicos])],
+  //exports: [SequelizeModule.forFeature([Medicos])],
 })
 export class MedicosModule {}

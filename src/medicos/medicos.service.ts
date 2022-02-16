@@ -13,7 +13,7 @@ export class MedicosService {
     private readonly httpService: HttpService,
   ) {}
 
-  async create(salvarMedico: Medicos): Promise<Medicos> {
+  async create(salvarMedico: Medicos): Promise<Medicos[]> {
     const cep = salvarMedico.cep;
     const dado = await lastValueFrom(
       this.httpService.get(`https://viacep.com.br/ws/${ cep }/json`)
@@ -23,9 +23,10 @@ export class MedicosService {
       ),
     );
     const list = [];
-    const dados = list.push(dado, salvarMedico);
-    console.log([dados]);
-    return await this.medicosModel.create(salvarMedico);
+    const dados = list.push(dado);
+    const dadosa = list.push(salvarMedico);
+    console.log(list);
+    return await this.medicosModel.bulkCreate(list);
 };
 
   async findAll(): Promise<Medicos[]> {

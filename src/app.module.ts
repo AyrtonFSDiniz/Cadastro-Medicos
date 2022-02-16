@@ -14,9 +14,9 @@ import { Medicos } from './model/medico.model';
       port: 3306,
       username: 'root',
       password: 'root',
-      database: 'mysql',
+      database: 'database_development', //mysql
       models: [Medicos],
-      //autoLoadModels: true,
+      autoLoadModels: true, //comentar essa linha para rodar com o docker
       synchronize: true,
     }),
   ],
