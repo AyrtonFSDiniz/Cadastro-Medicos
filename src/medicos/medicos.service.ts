@@ -1,7 +1,6 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { response } from 'express';
 import { lastValueFrom, map } from 'rxjs';
 import { Medicos } from '../model/medico.model';
 
@@ -13,11 +12,11 @@ export class MedicosService {
     private readonly httpService: HttpService,
   ) {}
 
-  async create(salvarMedico: Medicos): Promise<Medicos[]> {
+  async create(salvarMedico: Medicos): Promise<Medicos> {
     const cep = salvarMedico.cep;
     const dado = await lastValueFrom(
-      this.httpService.get(`https://viacep.com.br/ws/${ cep }/json`)
-        .pipe(map((response) => {
+      this.httpService.get(`https://viacep.com.br/ws/${cep}/json`).pipe(
+        map((response) => {
           return response.data;
         }),
       ),
@@ -26,8 +25,10 @@ export class MedicosService {
     const dados = list.push(dado);
     const dadosa = list.push(salvarMedico);
     console.log(list);
-    return await this.medicosModel.bulkCreate(list);
-};
+
+    //const x = salvarMedico.dados.push(dado);
+    return await this.medicosModel.create(salvarMedico);
+  }
 
   async findAll(): Promise<Medicos[]> {
     return await this.medicosModel.findAll();
@@ -38,6 +39,12 @@ export class MedicosService {
       where: { id },
     });
   }
+
+  /*async findOneNome(nome: string): Promise<Medicos> {
+    return await this.medicosModel.findOne({
+      where: { nome },
+    });
+  }*/
 
   async update(alterarMedico: Medicos): Promise<[number, Medicos[]]> {
     return await this.medicosModel.update(alterarMedico, {

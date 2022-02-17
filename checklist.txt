@@ -1,16 +1,21 @@
 -> Usando a API ViaCep e devolver o endereço só com o cep
 
-medicos.service.ts, no create():
 
- const dado = this.httpService
-      .get(`https://viacep.com.br/ws/${{ cep }}/json`)
-      .toPromise();
-    const dados = dado && cep;
-----------------------------------------
-
-const dados = dado && cep; -> para salvar ambos os dados, mas é estranho assim, melhor array.
-
-----------------------------------------
+ -> async create(salvarMedico: Medicos): Promise<Medicos> {
+    const cep = salvarMedico.cep;
+    const dado = await lastValueFrom(
+      this.httpService.get(`https://viacep.com.br/ws/${cep}/json`).pipe(
+        map((response) => {
+          return response.data;
+        }),
+      ),
+    );
+    const list = [];
+    const dados = list.push(dado);
+    const dadosa = list.push(salvarMedico);
+    console.log(list);
+    return await this.medicosModel.create(salvarMedico);
+---------------------------------------------------------
 Exemplo via github:
 
  import axios from 'axios';

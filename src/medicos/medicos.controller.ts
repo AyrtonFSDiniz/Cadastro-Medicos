@@ -15,7 +15,7 @@ export class MedicosController {
   constructor(private readonly medicosService: MedicosService) {}
 
   @Post()
-  async create(@Body() criarMedico: Medicos): Promise<Medicos[]> {
+  async create(@Body() criarMedico: Medicos): Promise<Medicos> {
     return await this.medicosService.create(criarMedico);
   }
 
@@ -28,6 +28,11 @@ export class MedicosController {
   findOne(@Param('id') id: number): Promise<Medicos> {
     return this.medicosService.findOne(+id);
   }
+
+  /*@Get(':nome')
+  findOneNome(@Param('nome') nome: string): Promise<Medicos> {
+    return this.medicosService.findOne(nome);
+  }*/
 
   @Patch(':id')
   update(

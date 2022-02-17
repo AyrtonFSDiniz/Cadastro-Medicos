@@ -50,8 +50,14 @@ export class Medicos extends Model<Medicos> {
     type: DataType.BIGINT(),
     allowNull: false,
     validate: {
-      isNumeric: true,
+      len: [1, 8],
     },
   })
-  cep: number[];
+  cep: number;
+
+  /*@Column({
+    type: DataType.STRING(),
+    allowNull: false,
+  })
+  dados: string[];*/
 }

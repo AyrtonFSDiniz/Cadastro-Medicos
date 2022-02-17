@@ -7,7 +7,9 @@ export class CreateMedicoDto {
 
   telefone_celular: number;
 
-  cep: number[];
+  cep: number;
+
+  //dados: string[];
 
   //nome_especialidades: string[];
 }
