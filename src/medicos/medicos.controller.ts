@@ -9,7 +9,9 @@ import {
 } from '@nestjs/common';
 import { MedicosService } from './medicos.service';
 import { Medicos } from '../model/medico.model';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Cadastro')
 @Controller('cadastro')
 export class MedicosController {
   constructor(private readonly medicosService: MedicosService) {}
@@ -29,10 +31,10 @@ export class MedicosController {
     return this.medicosService.findOne(+id);
   }
 
-  /*@Get(':nome')
+  @Get(':nome')
   findOneNome(@Param('nome') nome: string): Promise<Medicos> {
-    return this.medicosService.findOne(nome);
-  }*/
+    return this.medicosService.findOneNome(nome);
+  }
 
   @Patch(':id')
   update(

@@ -1,5 +1,5 @@
 import { HttpService } from '@nestjs/axios';
-import { Injectable } from '@nestjs/common';
+import { Injectable, Response } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { lastValueFrom, map } from 'rxjs';
 import { Medicos } from '../model/medico.model';
@@ -21,12 +21,7 @@ export class MedicosService {
         }),
       ),
     );
-    const list = [];
-    const dados = list.push(dado);
-    const dadosa = list.push(salvarMedico);
-    console.log(list);
-
-    //const x = salvarMedico.dados.push(dado);
+    console.log(dado);
     return await this.medicosModel.create(salvarMedico);
   }
 
@@ -40,11 +35,11 @@ export class MedicosService {
     });
   }
 
-  /*async findOneNome(nome: string): Promise<Medicos> {
+  async findOneNome(nome: string): Promise<Medicos> {
     return await this.medicosModel.findOne({
       where: { nome },
     });
-  }*/
+  }
 
   async update(alterarMedico: Medicos): Promise<[number, Medicos[]]> {
     return await this.medicosModel.update(alterarMedico, {
