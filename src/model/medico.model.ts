@@ -1,12 +1,4 @@
-import {
-  BelongsTo,
-  Column,
-  DataType,
-  ForeignKey,
-  HasMany,
-  Model,
-  Table,
-} from 'sequelize-typescript';
+import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
 import { Especialidades } from './especialidades.model';
 
 @Table
@@ -64,6 +56,12 @@ export class Medicos extends Model<Medicos> {
   })
   cep: number;
 
+  /*@Column({
+    type: DataType.STRING(),
+    allowNull: false,
+  })
+  nome_especialidades: string;*/
+
   @HasMany(() => Especialidades)
-  nome_especialidade: Especialidades[]
+  nome_especialidade: Especialidades[];
 }

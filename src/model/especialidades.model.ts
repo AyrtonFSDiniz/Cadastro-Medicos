@@ -3,7 +3,6 @@ import {
   Column,
   DataType,
   ForeignKey,
-  HasMany,
   Model,
   Table,
 } from 'sequelize-typescript';
@@ -14,6 +13,7 @@ export class Especialidades extends Model {
   @Column({
     type: DataType.INTEGER(),
     allowNull: false,
+    autoIncrement: true,
     primaryKey: true,
     validate: {
       isNumeric: true,
@@ -33,4 +33,5 @@ export class Especialidades extends Model {
 
   @BelongsTo(() => Medicos)
   medicos: Medicos[];
+
 }

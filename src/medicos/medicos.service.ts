@@ -1,7 +1,8 @@
 import { HttpService } from '@nestjs/axios';
-import { Injectable, Response } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { lastValueFrom, map } from 'rxjs';
+import { Especialidades } from 'src/model/especialidades.model';
 import { Medicos } from '../model/medico.model';
 
 @Injectable()
@@ -32,6 +33,7 @@ export class MedicosService {
   async findOne(id: number): Promise<Medicos> {
     return await this.medicosModel.findOne({
       where: { id },
+      include: [Especialidades],
     });
   }
 

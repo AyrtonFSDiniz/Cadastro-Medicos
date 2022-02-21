@@ -12,13 +12,13 @@ import { Especialidades } from './model/especialidades.model';
     SequelizeModule.forRoot({
       dialect: 'mysql',
       host: 'localhost',
-      port: 3307,
+      port: 3308, //3307 para local,
       username: 'root',
       password: 'root',
-      database: 'database_development', //mysql
+      database: 'database_development',
       models: [Medicos, Especialidades],
-      autoLoadModels: true, //comentar essa linha para rodar com o docker
-      synchronize: true,
+      //autoLoadModels: true, //comentar essa linha para rodar com o docker
+      //synchronize: true,
     }),
   ],
   controllers: [AppController],

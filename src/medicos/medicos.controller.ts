@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  HttpCode,
 } from '@nestjs/common';
 import { MedicosService } from './medicos.service';
 import { Medicos } from '../model/medico.model';
@@ -44,6 +45,7 @@ export class MedicosController {
     return this.medicosService.update(atualizarMedico);
   }
 
+  @HttpCode(204)
   @Delete(':id')
   remove(@Param('id') id: number): Promise<void> {
     return this.medicosService.remove(+id);
