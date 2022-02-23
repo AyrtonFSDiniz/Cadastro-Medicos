@@ -11,17 +11,6 @@ import { Medicos } from './medico.model';
 @Table
 export class Especialidades extends Model {
   @Column({
-    type: DataType.INTEGER(),
-    allowNull: false,
-    autoIncrement: true,
-    primaryKey: true,
-    validate: {
-      isNumeric: true,
-    },
-  })
-  id: number;
-
-  @Column({
     type: DataType.CHAR,
     allowNull: false,
   })
@@ -33,5 +22,4 @@ export class Especialidades extends Model {
 
   @BelongsTo(() => Medicos)
   medicos: Medicos[];
-
 }

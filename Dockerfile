@@ -10,4 +10,6 @@ RUN npm i -g @nestjs/cli@8.0.0
 
 USER node
 
+EXPOSE 3000
+
 WORKDIR /home/node/app

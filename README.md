@@ -32,6 +32,8 @@ Observações: Para rodar num banco MySQL localmente, alterar no arquivo ```app.
 
 Também pode-se descomentar as linhas 20 e 21 do arquivo ```app.module.ts``` para sincronizar e recarregar os ```models``` do database automaticamente, caso esteja utilizando o banco localmente.
 
+Um detalhe, é que ao cadastrar um médico, o retorno do endereço completo está sendo via console.
+
 ## Testes
 
 ```bash
