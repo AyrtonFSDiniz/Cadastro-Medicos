@@ -12,7 +12,7 @@ import { Especialidades } from './model/especialidades.model';
     SequelizeModule.forRoot({
       dialect: 'mysql',
       host: 'localhost',
-      port: 3307, //3307 para local,
+      port: 3308, //3307 para local,
       username: 'root',
       password: 'root',
       database: 'database_development',
