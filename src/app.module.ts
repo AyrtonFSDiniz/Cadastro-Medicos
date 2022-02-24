@@ -17,7 +17,7 @@ import { Especialidades } from './model/especialidades.model';
       password: 'root',
       database: 'database_development',
       models: [Medicos, Especialidades],
-      autoLoadModels: true, //comentar essa linha para rodar com o docker
+      //autoLoadModels: true, //comentar essa linha para rodar com o docker
       synchronize: true,
     }),
   ],
