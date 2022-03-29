@@ -48,9 +48,7 @@ Também pode-se descomentar as linhas 20 e 21 do arquivo ```app.module.ts``` par
 
 Um detalhe, é que ao cadastrar um médico, o retorno do endereço completo está sendo via console.
 
-Só houve dois detalhes aos quais não consegui até o momento executar de forma 100% satisfatória: ter o array de especialidades médicas ao cadastrar (mas todas as especialidades estão populadas no banco, via ```Seed```) e o correto funcionamento das aplicações via Docker. Tanto o banco quando a API estão em containers e rodando mas sempre retorna um erro de conexão entre ambos ao fazer uma requisição. Via banco localmente está funcionando sem problemas.
-
-Desculpas por não entregar o projeto 100%. Vou continuar pesquisando e trabalhando para corrigir esses erros.
+Há dois detalhes a corrigir: ter o array de especialidades médicas ao cadastrar (mas todas as especialidades estão populadas no banco, via ```Seed```) e o correto funcionamento das aplicações via Docker. Tanto o banco quando a API estão em containers e rodando mas sempre retorna um erro de conexão entre ambos ao fazer uma requisição. Via banco localmente está funcionando sem problemas.
 
 ## Licença
 
